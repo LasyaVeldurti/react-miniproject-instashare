@@ -1,0 +1,32 @@
+/* 
+.search-not-found-img {
+}
+.search-not-found-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.search-not-found-h1 {
+}
+.search-not-found-p {
+  color: rgb(219, 219, 219);
+}
+.search-results-conatiner {
+  width: 75%;
+  margin: auto;
+}
+.search-results-title {
+  margin-left: 70px;
+}
+*/
+
+@media screen and (min-width: 768px) {
+  .home-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}

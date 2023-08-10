@@ -1,0 +1,9 @@
+.story-img {
+  border-radius: 40px;
+  width: 80px;
+}
+.name {
+  color: #262626;
+  width: 100px;
+  text-align: center;
+}

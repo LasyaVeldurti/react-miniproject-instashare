@@ -1,0 +1,58 @@
+.my-profile-bg-container {
+  font-family: roboto;
+  width: 80%;
+  margin: auto;
+}
+.my-profile-container {
+  display: flex;
+  padding: 24px;
+  color: #262626;
+}
+.profile-data-container {
+  display: flex;
+}
+.profile-pic {
+  width: 140px;
+  height: 130px;
+
+  margin: 30px;
+  border-radius: 65px;
+}
+.count-data {
+  padding-right: 24px;
+}
+.posts-img-container {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+.post-img {
+  width: 200px;
+  height: 200px;
+  margin-right: 12px;
+}
+.posts-icon {
+  font-size: 20px;
+  margin-right: 12px;
+  margin-top: 30px;
+}
+
+.posts-icon-container {
+  display: flex;
+  margin-left: 40px;
+}
+.highlight {
+  font-weight: bold;
+}
+.display-posts-container {
+  margin: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.story-slider-container {
+  list-style-type: none;
+  display: flex;
+}
+.story-img {
+  margin-right: 15px;
+}

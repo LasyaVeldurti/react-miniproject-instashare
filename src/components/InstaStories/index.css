@@ -1,0 +1,17 @@
+.slider-container {
+  list-style-type: none;
+  padding-left: 0px;
+  margin: auto;
+  width: 1040px;
+  padding: 20px;
+  font-family: roboto;
+}
+.loader-container {
+  text-align: center;
+}
+.failure-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

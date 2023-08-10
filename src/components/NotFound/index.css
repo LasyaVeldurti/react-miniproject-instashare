@@ -1,0 +1,17 @@
+.not-found-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: roboto;
+}
+.home-page-btn {
+  background-color: #3b82f6;
+  padding: 12px;
+  color: #ffffff;
+  border-radius: 8px;
+  border-style: none;
+  outline: none;
+  cursor: pointer;
+}

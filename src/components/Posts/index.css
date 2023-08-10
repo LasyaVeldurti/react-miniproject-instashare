@@ -1,0 +1,66 @@
+.posts-li-container {
+  margin: auto;
+  font-family: roboto;
+  border: 1px solid rgb(152, 152, 152);
+  border-radius: 5px;
+  margin-bottom: 16px;
+}
+.profilepic-container {
+  display: flex;
+  padding-left: 30px;
+  padding-top: 30px;
+  margin-bottom: 16px;
+}
+.profile-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  margin-right: 16px;
+  background-image: linear-gradient(#e20337, #c60188, #7700c3);
+  padding: 2px;
+}
+
+.posts-img {
+  width: 100%;
+  height: 450px;
+}
+.user-name {
+  color: #334155;
+  font-weight: bold;
+  margin-right: 12px;
+}
+.comment-ul-container {
+  list-style-type: none;
+  padding-left: 0px;
+}
+.comment-text {
+  display: flex;
+}
+.likes-count {
+  color: #334155;
+  font-weight: bold;
+}
+.post-desription-container {
+  margin: 12px;
+  padding-left: 12px;
+  font-size: 15px;
+}
+.icon-container {
+  display: flex;
+}
+
+.icon-btn {
+  background: transparent;
+  border-style: none;
+  padding-left: 0px;
+  padding-right: 8px;
+  color: rgb(152, 152, 152);
+  font-size: 24px;
+  cursor: pointer;
+}
+.created-at {
+  color: rgb(152, 152, 152);
+}
+.comment-icon {
+  font-size: 24px;
+}
