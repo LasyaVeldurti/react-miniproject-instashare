@@ -7,7 +7,7 @@ const ReactSlick = props => {
   return (
     <>
       <li>
-        <img className="story-img" src={storyImage} alt={name} />
+        <img className="story-img" src={storyImage} alt="user story" />
         <p className="name">{name}</p>
       </li>
     </>

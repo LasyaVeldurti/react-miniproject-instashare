@@ -78,7 +78,7 @@ class InstaStories extends Component {
   }
 
   renderLoadingView = () => (
-    <div className="loader-container" testid="loader">
+    <div className="loader-container" data-testid="loader">
       <Loader type="TailSpin" color="#4094EF" height={30} width={30} />
     </div>
   )

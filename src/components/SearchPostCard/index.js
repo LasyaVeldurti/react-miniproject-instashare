@@ -3,12 +3,14 @@ import {FcLike} from 'react-icons/fc'
 import {FaRegComment} from 'react-icons/fa'
 
 import {BiShareAlt} from 'react-icons/bi'
+import {Link, withRouter} from 'react-router-dom'
 
 import './index.css'
 
 const SearchPostCard = props => {
   const {postDetails} = props
   const {
+    userId,
     userName,
     profilePic,
     postImageUrl,
@@ -22,10 +24,11 @@ const SearchPostCard = props => {
     <li className="posts-li-container">
       <div className="profilepic-container">
         <img className="profile-img" src={profilePic} alt={userName} />
-
-        <p className="user-name">{userName} </p>
+        <Link className="link-items" to={`/users/${userId}`}>
+          <p className="user-name">{userName} </p>
+        </Link>
       </div>
-      <img className="posts-img" src={postImageUrl} alt="user post" />
+      <img className="posts-img" src={postImageUrl} alt="post" />
       <div className="post-desription-container">
         <div className="icon-container">
           <button className="icon-btn" type="button">
@@ -57,4 +60,4 @@ const SearchPostCard = props => {
   )
 }
 
-export default SearchPostCard
+export default withRouter(SearchPostCard)

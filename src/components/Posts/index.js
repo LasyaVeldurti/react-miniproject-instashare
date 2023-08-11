@@ -15,6 +15,7 @@ import './index.css'
 
 class Posts extends Component {
   state = {isLiked: false}
+  // const {postDetails} = this.props
 
   onClickToggleLike = async () => {
     const {isLiked} = this.state
@@ -40,6 +41,7 @@ class Posts extends Component {
 
     const data = await response.json()
     console.log(data)
+    this.setState(prevState => ({count: prevState.count + 1}))
   }
 
   render() {
@@ -73,7 +75,7 @@ class Posts extends Component {
             <button
               className="icon-btn"
               onClick={this.onClickToggleLike}
-              testid="unlikeIcon"
+              data-testid="unlikeIcon"
               type="button"
             >
               {isLiked && <FcLike className="comment-icon" />}
@@ -81,7 +83,7 @@ class Posts extends Component {
             <button
               className="icon-btn"
               onClick={this.onClickToggleLike}
-              testid="likeIcon"
+              data-testid="likeIcon"
               type="button"
             >
               {!isLiked && <BsHeart className="comment-icon" />}

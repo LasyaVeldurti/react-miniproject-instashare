@@ -64,6 +64,10 @@
 }
 .logo-container {
   list-style-type: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 15px;
 }
 .ham-btn {
   background: transparent;
@@ -73,4 +77,10 @@
 }
 .close-icon {
   font-size: 22px;
+}
+.nav-items {
+  padding-right: 12px;
+  font-weight: bold;
+  font-size: 25px;
+  font-family: 'Roboto';
 }
