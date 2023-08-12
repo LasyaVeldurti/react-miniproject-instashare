@@ -24,7 +24,7 @@ class Home extends Component {
     apiStatus: apiStatusConstants.initial,
     searchResultsList: [],
     searchInput: '',
-    displaySearchResults: false,
+    displayResults: false,
   }
 
   getSearchResults = async () => {
@@ -44,7 +44,7 @@ class Home extends Component {
 
     const data = await response.json()
     if (response.ok === true) {
-      //   console.log(data.posts)
+      //  console.log(data.posts)
       const updatedData = data.posts.map(eachPost => ({
         postId: eachPost.post_id,
         userId: eachPost.user_id,
@@ -53,7 +53,7 @@ class Home extends Component {
         created: eachPost.created_at,
         likesCount: eachPost.likes_count,
         postCaption: eachPost.post_details.caption,
-        postImageUrl: eachPost.post_details.image_url,
+        imageUrl: eachPost.post_details.image_url,
         comments: eachPost.comments.map(eachComment => ({
           commentsUserName: eachComment.user_name,
           commentsUserId: eachComment.user_id,
@@ -61,9 +61,9 @@ class Home extends Component {
         })),
       }))
       this.setState({
-        displaySearchResults: true,
         apiStatus: apiStatusConstants.success,
         searchResultsList: updatedData,
+        displayResults: true,
       })
     } else {
       this.setState({apiStatus: apiStatusConstants.failure})
@@ -83,11 +83,11 @@ class Home extends Component {
   }
 
   renderSuccessView = () => {
-    const {searchResultsList, displaySearchResults} = this.state
+    const {searchResultsList} = this.state
 
     return (
       <>
-        {displaySearchResults && (
+        {searchResultsList.length !== 0 ? (
           <div className="search-results-conatiner">
             <h1 className="search-results-title">Search Results</h1>
             <ul className="posts-ul-container">
@@ -96,8 +96,7 @@ class Home extends Component {
               ))}
             </ul>
           </div>
-        )}{' '}
-        {searchResultsList.length === 0 && (
+        ) : (
           <div className="search-not-found-container">
             <img
               className="search-not-found-img"
@@ -115,7 +114,7 @@ class Home extends Component {
   }
 
   renderLoadingView = () => (
-    <div className="loader-container" data-testid="loader">
+    <div className="loader-container" testid="loader">
       <Loader type="TailSpin" color="#4094EF" height={30} width={30} />
     </div>
   )
@@ -126,7 +125,7 @@ class Home extends Component {
         src="https://res.cloudinary.com/dpwjw4iaw/image/upload/v1689351009/insta-share/failure_image_k4ew3a.png"
         alt="failure view"
       />
-      <h1>Something went wrong. Please try again</h1>
+      <p>Something went wrong. Please try again</p>
       <button onClick={this.onClickTryAgain} type="button">
         Try again
       </button>
@@ -150,14 +149,14 @@ class Home extends Component {
   }
 
   render() {
-    const {displaySearchResults} = this.state
+    const {displayResults} = this.state
     return (
       <>
         <Header
           changeSearchInput={this.changeSearchInput}
           enterSearchInput={this.enterSearchInput}
         />
-        {displaySearchResults ? (
+        {displayResults ? (
           this.renderAllSearchResults()
         ) : (
           <div>

@@ -1,3 +1,6 @@
+.main-container {
+  display: flex;
+}
 .header-container {
   display: flex;
   justify-content: space-between;

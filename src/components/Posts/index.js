@@ -14,15 +14,14 @@ import {Link, withRouter} from 'react-router-dom'
 import './index.css'
 
 class Posts extends Component {
-  state = {isLiked: false}
+  state = {isLiked: false, counter: 0, likedStatus: false}
   // const {postDetails} = this.props
 
-  onClickToggleLike = async () => {
-    const {isLiked} = this.state
-    this.setState(prevState => ({isLiked: !prevState.isLiked}))
-
+  renderPostLikeStatus = async () => {
+    const {isLiked, likedStatus} = this.state
     const {postDetails} = this.props
     const {postId} = postDetails
+    console.log(likedStatus)
     const likedRequestBody = {
       like_status: isLiked,
     }
@@ -41,11 +40,22 @@ class Posts extends Component {
 
     const data = await response.json()
     console.log(data)
-    this.setState(prevState => ({count: prevState.count + 1}))
+  }
+
+  onClickIncrementLike = () => {
+    this.setState({isLiked: true})
+    this.setState(prevState => ({counter: prevState.counter + 1}))
+    this.setState({likedStatus: true}, this.renderPostLikeStatus)
+  }
+
+  onClickDecrementLike = () => {
+    this.setState({isLiked: false})
+    this.setState(prevState => ({counter: prevState.counter - 1}))
+    this.setState({likedStatus: false}, this.renderPostLikeStatus)
   }
 
   render() {
-    const {isLiked} = this.state
+    const {isLiked, counter} = this.state
     const {postDetails} = this.props
     const {
       userId,
@@ -57,8 +67,9 @@ class Posts extends Component {
       comments,
       created,
     } = postDetails
+    const updatedCount = likesCount + counter
     return (
-      <li className="posts-li-container">
+      <li className="posts-li-container" testid="postCard">
         <div className="profilepic-container">
           <img
             className="profile-img"
@@ -72,22 +83,25 @@ class Posts extends Component {
         <img className="posts-img" src={postImageUrl} alt="post" />
         <div className="post-desription-container">
           <div className="icon-container">
-            <button
-              className="icon-btn"
-              onClick={this.onClickToggleLike}
-              data-testid="unlikeIcon"
-              type="button"
-            >
-              {isLiked && <FcLike className="comment-icon" />}
-            </button>
-            <button
-              className="icon-btn"
-              onClick={this.onClickToggleLike}
-              data-testid="likeIcon"
-              type="button"
-            >
-              {!isLiked && <BsHeart className="comment-icon" />}
-            </button>
+            {isLiked ? (
+              <button
+                className="icon-btn"
+                onClick={this.onClickDecrementLike}
+                testid="unlikeIcon"
+                type="button"
+              >
+                <FcLike className="comment-icon" />
+              </button>
+            ) : (
+              <button
+                className="icon-btn"
+                onClick={this.onClickIncrementLike}
+                testid="likeIcon"
+                type="button"
+              >
+                <BsHeart className="comment-icon" />
+              </button>
+            )}
 
             <button className="icon-btn" type="button">
               <FaRegComment className="comment-icon" />
@@ -98,7 +112,7 @@ class Posts extends Component {
             </button>
           </div>
 
-          <p className="likes-count">{likesCount} likes </p>
+          <p className="likes-count">{updatedCount} likes </p>
           <p>{caption}</p>
           <ul className="comment-ul-container">
             {comments.map(eachComment => (
