@@ -67,7 +67,7 @@ class Posts extends Component {
     } = postDetails
     const updatedCount = likesCount + counter
     return (
-      <li className="posts-li-container">
+      <li className="posts-li-container" testid="postCard">
         <div className="profilepic-container">
           <img
             className="profile-img"

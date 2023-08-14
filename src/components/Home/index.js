@@ -24,7 +24,10 @@ class Home extends Component {
     apiStatus: apiStatusConstants.initial,
     searchResultsList: [],
     searchInput: '',
-    displayResults: false,
+  }
+
+  componentDidMount() {
+    this.getSearchResults()
   }
 
   getSearchResults = async () => {
@@ -63,7 +66,6 @@ class Home extends Component {
       this.setState({
         apiStatus: apiStatusConstants.success,
         searchResultsList: updatedData,
-        displayResults: true,
       })
     } else {
       this.setState({apiStatus: apiStatusConstants.failure})
@@ -149,14 +151,14 @@ class Home extends Component {
   }
 
   render() {
-    const {displayResults} = this.state
+    const {searchInput} = this.state
     return (
       <>
         <Header
           changeSearchInput={this.changeSearchInput}
           enterSearchInput={this.enterSearchInput}
         />
-        {displayResults ? (
+        {searchInput !== '' ? (
           this.renderAllSearchResults()
         ) : (
           <div>
