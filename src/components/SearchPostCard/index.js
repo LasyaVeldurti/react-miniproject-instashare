@@ -13,13 +13,13 @@ import {Link, withRouter} from 'react-router-dom'
 import './index.css'
 
 class SearchPostCard extends Component {
-  state = {isLiked: false, counter: 0, likedStatus: false}
+  state = {isLiked: false, counter: 0}
 
   renderPostLikeStatus = async () => {
-    const {isLiked, likedStatus} = this.state
+    const {isLiked} = this.state
     const {postDetails} = this.props
     const {postId} = postDetails
-    console.log(likedStatus)
+
     const likedRequestBody = {
       like_status: isLiked,
     }
@@ -41,15 +41,13 @@ class SearchPostCard extends Component {
   }
 
   onClickIncrementLike = () => {
-    this.setState({isLiked: true})
     this.setState(prevState => ({counter: prevState.counter + 1}))
-    this.setState({likedStatus: true}, this.renderPostLikeStatus)
+    this.setState({isLiked: true}, this.renderPostLikeStatus)
   }
 
   onClickDecrementLike = () => {
-    this.setState({isLiked: false})
     this.setState(prevState => ({counter: prevState.counter - 1}))
-    this.setState({likedStatus: false}, this.renderPostLikeStatus)
+    this.setState({isLiked: false}, this.renderPostLikeStatus)
   }
 
   render() {
@@ -86,7 +84,7 @@ class SearchPostCard extends Component {
               <button
                 className="icon-btn"
                 onClick={this.onClickDecrementLike}
-                testid="unlikeIcon"
+                testid="unLikeIcon"
                 type="button"
               >
                 <FcLike className="comment-icon" />

@@ -84,7 +84,7 @@ class Home extends Component {
 
   renderSuccessView = () => {
     const {searchResultsList} = this.state
-
+    console.log(searchResultsList)
     return (
       <>
         {searchResultsList.length !== 0 ? (

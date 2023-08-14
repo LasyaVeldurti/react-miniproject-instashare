@@ -14,14 +14,14 @@ import {Link, withRouter} from 'react-router-dom'
 import './index.css'
 
 class Posts extends Component {
-  state = {isLiked: false, counter: 0, likedStatus: false}
+  state = {isLiked: false, counter: 0}
   // const {postDetails} = this.props
 
   renderPostLikeStatus = async () => {
-    const {isLiked, likedStatus} = this.state
+    const {isLiked} = this.state
     const {postDetails} = this.props
     const {postId} = postDetails
-    console.log(likedStatus)
+
     const likedRequestBody = {
       like_status: isLiked,
     }
@@ -43,15 +43,13 @@ class Posts extends Component {
   }
 
   onClickIncrementLike = () => {
-    this.setState({isLiked: true})
     this.setState(prevState => ({counter: prevState.counter + 1}))
-    this.setState({likedStatus: true}, this.renderPostLikeStatus)
+    this.setState({isLiked: true}, this.renderPostLikeStatus)
   }
 
   onClickDecrementLike = () => {
-    this.setState({isLiked: false})
     this.setState(prevState => ({counter: prevState.counter - 1}))
-    this.setState({likedStatus: false}, this.renderPostLikeStatus)
+    this.setState({isLiked: false}, this.renderPostLikeStatus)
   }
 
   render() {
@@ -69,7 +67,7 @@ class Posts extends Component {
     } = postDetails
     const updatedCount = likesCount + counter
     return (
-      <li className="posts-li-container" testid="postCard">
+      <li className="posts-li-container">
         <div className="profilepic-container">
           <img
             className="profile-img"
@@ -87,7 +85,7 @@ class Posts extends Component {
               <button
                 className="icon-btn"
                 onClick={this.onClickDecrementLike}
-                testid="unlikeIcon"
+                testid="unLikeIcon"
                 type="button"
               >
                 <FcLike className="comment-icon" />
