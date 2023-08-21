@@ -53,7 +53,7 @@ class InstaStories extends Component {
     }
   }
 
-  onClickTyrAgain = () => {
+  onClickTryAgain = () => {
     this.getUserStories()
   }
 
@@ -90,7 +90,7 @@ class InstaStories extends Component {
         alt="failure view"
       />
       <p>Something Went Wrong. Please Try again</p>
-      <button onClick={this.onClickTyrAgain} type="button">
+      <button onClick={this.onClickTryAgain} type="button">
         Try again
       </button>
     </div>

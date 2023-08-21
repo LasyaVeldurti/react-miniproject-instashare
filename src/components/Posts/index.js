@@ -75,7 +75,7 @@ class Posts extends Component {
             alt="post author profile"
           />
           <Link className="link-items" to={`/users/${userId}`}>
-            <p className="user-name">{userName} </p>
+            <span className="user-name">{userName}</span>
           </Link>
         </div>
         <img className="posts-img" src={postImageUrl} alt="post" />

@@ -113,7 +113,9 @@ class SearchPostCard extends Component {
           <ul className="comment-ul-container">
             {comments.map(eachComment => (
               <li className="comment-text" key={eachComment.commentsUserId}>
-                <p className="user-name">{eachComment.commentsUserName} </p>
+                <span className="user-name">
+                  {eachComment.commentsUserName}{' '}
+                </span>
                 <p>{eachComment.comment} </p>
               </li>
             ))}
